@@ -3,11 +3,11 @@ import Note from '../models/Note.js';
 
 export async function getAllNotes(req, res) {
     try {
-        const notes = await Note.find()
-        res.status(200).json(notes)
+        const notes = await Note.find().sort({createdAt: -1});
+        res.status(200).json(notes);
     } catch (error){
         res.status(500).send("internal server error");
-        console.error("getAllNotes error: "+error)
+        console.error("getAllNotes error: "+error);
     } 
 }
 
@@ -26,7 +26,7 @@ export async function createNote(req, res) {
     try {
        // const title = req.body.title;
        // const constent = req.body.content;
-        const{title, content} = req.body;
+        const {title, content} = req.body;
         const note = new Note({ title, content })
 
         const newNote = await note.save()
