@@ -11,6 +11,17 @@ export async function getAllNotes(req, res) {
     } 
 }
 
+export async function getNote (req, res) {
+    try {
+        const id = req.params.id
+        const note = await Note.findById(id)
+        res.status(200).json({message: 'note found', note: note})
+    } catch (error){
+        res.status(500).send("internal server error");
+        console.error("getAllNotes error: "+error)
+    } 
+}
+
 export async function createNote(req, res) {
     try {
        // const title = req.body.title;
