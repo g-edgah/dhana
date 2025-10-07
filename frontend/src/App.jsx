@@ -11,7 +11,8 @@ import toast from 'react-hot-toast'
 function App() {
   
   return (
-   <div data-theme="black">
+   <div data-theme="forest">
+    <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 " />
     <Routes>
       <Route path='/' element={<HomePage />}></Route>
       <Route path='/note/:id' element={<NoteDetailPage />}></Route>

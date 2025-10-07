@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <App />
-      <Toaster />
+      <Toaster className='max-h-0' />
     </BrowserRouter>
   </StrictMode>,
 )
