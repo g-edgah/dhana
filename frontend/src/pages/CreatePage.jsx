@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router';
 import { ArrowLeftIcon } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast'
-import axios from 'axios'
+import api from '../lib/axios.js'
 
 function CreatePage() {
   const [ title, setTitle ] = useState('');
@@ -24,7 +24,7 @@ function CreatePage() {
     
     try {
       console.log("submiting")
-      const req = await axios.post("http://localhost:5001/api/notes/addNote",
+      const req = await api.post("/notes/addNote",
         {
           title, content
         }
@@ -35,7 +35,10 @@ function CreatePage() {
     } catch (error) {
       toast.error("Failed to create note");
       if(error.response.status === 429 ){
-        toast.error("slow down cowboy")
+        toast.error("slow down cowboy", {
+          duration: 4000,
+          icon: '☠️'
+        })
       }
       console.log(error);
     } finally {
