@@ -33,13 +33,14 @@ function CreatePage() {
       toast.success('Note created successfully')
       navigate("/")
     } catch (error) {
-      toast.error("Failed to create note");
-      if(error.response.status === 429 ){
+      
+      if(error.response?.status === 429 ){
         toast.error("slow down cowboy", {
           duration: 4000,
           icon: '☠️'
         })
       }
+      toast.error("Failed to create note");
       console.log(error);
     } finally {
       setLoading(false);
